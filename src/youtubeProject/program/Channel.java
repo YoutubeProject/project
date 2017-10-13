@@ -1,6 +1,6 @@
-package YoutubeProject.Program;
+package youtubeProject.program;
 
-import YoutubeProject.Channels.OneChannel;
+import youtubeProject.channels.OneChannel;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 

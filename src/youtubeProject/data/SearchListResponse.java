@@ -1,4 +1,4 @@
-package YoutubeProject.Data;
+package youtubeProject.data;
 
 import java.util.List;
 

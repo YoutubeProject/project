@@ -1,10 +1,10 @@
-package YoutubeProject.Channels;
+package youtubeProject.channels;
 
-import YoutubeProject.Data.Request2;
-import YoutubeProject.Data.SearchListResponse;
-import YoutubeProject.Data.SearchResult;
-import YoutubeProject.Videos.Request3;
-import YoutubeProject.Videos.VideoListResponse;
+import youtubeProject.data.Request2;
+import youtubeProject.data.SearchListResponse;
+import youtubeProject.data.SearchResult;
+import youtubeProject.videos.Request3;
+import youtubeProject.videos.VideoListResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.ObjectMapper;
@@ -29,7 +29,7 @@ public class Request1 {
     }
 
 
-    static String channelId = "UCJALCpMORvQrlN7dAPLiCWg";
+
     static String myApiKey = "AIzaSyBifuUatBiNP7C8X2zjMM1BJWinnrES6Ic";
 
     public static OneChannel getYouTubeChannelAsObject(String channelId) throws UnirestException {
@@ -74,7 +74,7 @@ public class Request1 {
                 .queryString("id", channelId)
                 .queryString("part", "snippet,statistics")
                 .queryString("fields", "items(snippet(title,publishedAt),statistics(viewCount,subscriberCount,videoCount))")
-                .queryString("key", myApiKey)
+                .queryString("key", "AIzaSyDU2cowjo-PZ6Kmj93yjSU3grbjNL20LD0")
                 .asObject(ChannelListResponse.class);
         return response.getBody();
     }
@@ -85,7 +85,7 @@ public class Request1 {
                 .queryString("part", "snippet,statistics")
                 .queryString("fields", "items(snippet(title,publishedAt),statistics(viewCount,subscriberCount,videoCount))")
                 .queryString("maxResults", "3")
-                .queryString("key", myApiKey)
+                .queryString("key", "AIzaSyDU2cowjo-PZ6Kmj93yjSU3grbjNL20LD0")
                 .asString();
         return response.getBody();
     }

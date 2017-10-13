@@ -1,13 +1,12 @@
-package YoutubeProject.Videos;
+package youtubeProject.videos;
 
 
 
-import YoutubeProject.Channels.Statistics;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class Video {
-    public YoutubeProject.Videos.Statistics statistics;
+    public youtubeProject.videos.Statistics statistics;
 
 }

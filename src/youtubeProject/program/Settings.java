@@ -1,47 +1,46 @@
-package YoutubeProject.Program;
+package youtubeProject.program;
 
+
+import com.mashape.unirest.http.exceptions.UnirestException;
+import youtubeProject.channels.Request1;
+import youtubeProject.interfase.userInterfase.settingsInterfase.SaveToCache;
 
 import java.io.*;
+import java.util.ArrayList;
 
 
 public class Settings  {
+    public static String cacheDirectory = "/Cache/" + RequestOne.channelId + ".txt";
+    public static String savedSettingsPath = "/Settings/settings.txt";
+    public static boolean showExecutionTime;
 
-    static boolean useCache;
-    boolean showExecutionTime;
-    String savedSettingsPath;
-    static String cacheDirectory;
 
-    public Settings() {
-        //savedSettingsPath = "/Users/test/IdeaProjects/GoIT_JavaCore/Final Project/settings.txt";
-        //downloadSavedSettings();
-    }
+    ArrayList<String>list = new ArrayList<>();
 
-    void downloadSavedSettings() {
-        try (BufferedReader br = new BufferedReader(new FileReader(savedSettingsPath))) {
-            useCache = br.readLine().equals("true");
-            cacheDirectory = br.readLine();
-            showExecutionTime = br.readLine().equals("true");
-        } catch (IOException e) {
-            //alert("IOException thrown","Cannot download from file saved settings.");
+    public void downloadSavedSettings() throws UnirestException, IOException {
+        String s = Request1.getChannelDataAsString(RequestOne.channelId);
+        if(list.size() > 0) {
+            for (int i = 0; i < list.size(); i++) {
+                if (RequestOne.channelId.equals(list.get(i))) {
+                    return;
+                }
+            }
+        }
+        else if(list.isEmpty()){
+            list.add(RequestOne.channelId);
+            FileWriter writer = new FileWriter("/Cache/" + RequestOne.channelId + ".txt");
+            return;
+        }else {
+            list.add(RequestOne.channelId);
+            FileWriter writer = new FileWriter("/Cache/" + RequestOne.channelId + ".txt");
         }
     }
 
-    void saveSettings() {
-        try {
-            File file = new File(savedSettingsPath);
-            FileWriter writer = new FileWriter(file);
-            writer.write((useCache ? "true" : "false") + "\n");
-            writer.write(cacheDirectory + "\n");
-            writer.write(showExecutionTime ? "true" : "false");
-            writer.flush();
-        } catch (Exception e){
-           // alert("Exception thrown","Settings file not found.");
-        }
-    }
 
     void cleanFilesInCacheDirectory() {
         File folder = new File(cacheDirectory);
         for (File file : folder.listFiles()) file.delete();
     }
+
 
 }

@@ -1,4 +1,4 @@
-package YoutubeProject.Channels;
+package youtubeProject.channels;
 
 
 import java.util.List;

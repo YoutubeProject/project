@@ -1,30 +1,38 @@
-package YoutubeProject.Program;
+package youtubeProject.program;
 
-import YoutubeProject.Channels.ChannelListResponse;
-import YoutubeProject.Channels.OneChannel;
-import YoutubeProject.Channels.Request1;
+import youtubeProject.channels.ChannelListResponse;
+import youtubeProject.channels.OneChannel;
+import youtubeProject.channels.Request1;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import youtubeProject.interfase.userInterfase.settingsInterfase.SaveToCache;
+
 import java.util.Scanner;
 
 
 import java.io.*;
 
-import static YoutubeProject.Program.Settings.*;
+import static youtubeProject.program.Settings.*;
 
 public class RequestOne {
     Text name;
     Text description;
+    public static String channelId = "UCJALCpMORvQrlN7dAPLiCWg";
 
-    protected Scanner sc = new Scanner(System.in);
+    public RequestOne(String channelId ){
+        this.channelId = channelId;
+    }
+    public RequestOne(){
+        this.channelId = channelId;
+    }
 
-    Channel getChannel(String channelId) {
+
+
+
+    Channel getChannel() {
         try {
-            if (useCache) {
+            if (SaveToCache.useCache) {
                 System.out.println("Use cache option was checked and is 'true'.");
                 if (checkIfCached(channelId)) {
                     System.out.println("Channel was checked if cached and is 'true'.");
