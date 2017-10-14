@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="YoutubeApp.Controller">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="159.0">
+         <children>
+            <MenuBar prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Go to">
+                  <items>
+                        <Menu mnemonicParsing="false" text="YouTube Analytics">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Show channel info" />
+                              <MenuItem mnemonicParsing="false" text="Compare channels info" />
+                              <MenuItem mnemonicParsing="false" text="Sort channels" />
+                              <MenuItem mnemonicParsing="false" text="Media resonans" />
+                              <MenuItem mnemonicParsing="false" text="Compare media resonans" />
+                              <MenuItem mnemonicParsing="false" text="Sort by media resonans" />
+                          </items>
+                        </Menu>
+                        <MenuItem mnemonicParsing="false" text="Settings" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Hyperlink layoutX="14.0" layoutY="40.0"  text="YouTube Analytics" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="40.0" />
+            <Hyperlink layoutX="14.0" layoutY="63.0" text="Settings" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="63.0" />
+            <Button  fx:id="youTubeAnalyticsButton" layoutX="14.0" layoutY="86.0" mnemonicParsing="false"  text="YouTube Analytics" AnchorPane.leftAnchor="14.0" />
+            <Button layoutX="14.0" layoutY="120.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Settings" AnchorPane.leftAnchor="14.0" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Label layoutX="7.0" layoutY="376.0" prefHeight="17.0" prefWidth="175.0" text="YouTube Analytics program v1.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="235.0" />
+            <Accordion layoutX="24.0" layoutY="74.0" />
+            <Label layoutX="112.0" layoutY="6.0" prefHeight="17.0" prefWidth="175.0" text="Welcome to YouTube Analytics!" AnchorPane.leftAnchor="112.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="6.0" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
