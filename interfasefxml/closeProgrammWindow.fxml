@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="237.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="24.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Yes" />
+      <Button layoutX="140.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="No" />
+      <Label layoutX="61.0" layoutY="39.0" prefHeight="17.0" prefWidth="126.0" text="Close the programm?" />
+   </children>
+</AnchorPane>
