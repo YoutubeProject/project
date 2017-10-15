@@ -1,0 +1,15 @@
+{
+ "items": [
+  {
+   "snippet": {
+    "title": "МИР НАИЗНАНКУ",
+    "publishedAt": "2010-10-30T00:56:01.000Z"
+   },
+   "statistics": {
+    "viewCount": "49997152",
+    "subscriberCount": "244754",
+    "videoCount": "246"
+   }
+  }
+ ]
+}

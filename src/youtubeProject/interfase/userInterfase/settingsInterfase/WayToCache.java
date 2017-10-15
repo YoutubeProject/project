@@ -15,38 +15,18 @@ import java.util.Scanner;
  */
 public class WayToCache {
    private static Scanner sc = new Scanner(System.in);
-   private static String way = "/Cache/" + RequestOne.channelId;
+   public static String way = "Cache/";
 
     private static ArrayList<String> list = new ArrayList<>();
 
-   public WayToCache(String way){
-       this.way = way;
-   }
+
 
     public static void display() throws IOException, UnirestException {
         System.out.println("Way to cache");
-        System.out.println(Settings.cacheDirectory);
-        System.out.println("Current way :" + way );
+        System.out.println();
+        System.out.println("Current way : " + way );
         System.out.println("Enter new way to the cache");
         way = sc.nextLine();
-        newWayToCache(way);
     }
-    private static void newWayToCache(String way) throws UnirestException, IOException {
-        String s = Request1.getChannelDataAsString(RequestOne.channelId);
-        if(list.size() > 0) {
-            for (int i = 0; i < list.size(); i++) {
-                if (RequestOne.channelId.equals(list.get(i))) {
-                    return;
-                }
-            }
-        }
-        else if(list.isEmpty()){
-            list.add(RequestOne.channelId);
-            FileWriter writer = new FileWriter(way + RequestOne.channelId + ".txt");
-            return;
-        }else {
-            list.add(RequestOne.channelId);
-            FileWriter writer = new FileWriter(way + RequestOne.channelId + ".txt");
-        }
-    }
+
 }

@@ -14,17 +14,16 @@ import java.util.Scanner;
  */
 public class SaveToCache {
     private static Scanner sc = new Scanner(System.in);
-    private static Settings settings = new Settings();
-    public static boolean saveCache;
+    public static boolean saveCache = true;
 
     public static void save() throws IOException, UnirestException {
         boolean x = true;
         do{
-            System.out.println("Save the cache?");
+            System.out.println("Save the cache?(true/false)");
             String s = sc.nextLine();
             if(s.equals("TRUE")||s.equals("True")||s.equals("true")){
-                settings.downloadSavedSettings();
                 saveCache = true;
+                x = false;
             }else {
                 saveCache = false;
                 x = false;

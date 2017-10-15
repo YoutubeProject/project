@@ -12,25 +12,13 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import static youtubeProject.program.RequestOne.channelId;
 
 public class Request1 {
 
-    public static void main(String[] args) throws UnirestException {
-        SearchListResponse searchListResponse = Request2.requestSearchVideosListAsObject(channelId, myApiKey);
-        StringBuilder videosList = new StringBuilder();
-        for (SearchResult i : searchListResponse.items) {
-            videosList.append(i.id.videoId);
-            videosList.append(",");
-        }
-
-
-    VideoListResponse videoListResponse = Request3.requestVideoDataAsObject(videosList.toString(),myApiKey);
-        System.out.println(videoListResponse.countComments());
-    }
-
-
-
-    static String myApiKey = "AIzaSyBifuUatBiNP7C8X2zjMM1BJWinnrES6Ic";
+    public static String myApiKey = "AIzaSyBifuUatBiNP7C8X2zjMM1BJWinnrES6Ic";
 
     public static OneChannel getYouTubeChannelAsObject(String channelId) throws UnirestException {
         ChannelListResponse channelsResponse = requestChannelDataAsObject(channelId);
@@ -41,7 +29,6 @@ public class Request1 {
     }
 
     public static String getChannelDataAsString(String channelId) throws UnirestException {
-        System.out.println("Channel data successfully retrieved from server.");
         return requestChannelDataAsString(channelId);
     }
 
@@ -69,7 +56,6 @@ public class Request1 {
     }
 
     private static ChannelListResponse requestChannelDataAsObject(String channelId) throws UnirestException {
-        initApplication();
         HttpResponse<ChannelListResponse> response = Unirest.get("https://www.googleapis.com/youtube/v3/channels")
                 .queryString("id", channelId)
                 .queryString("part", "snippet,statistics")
@@ -78,8 +64,8 @@ public class Request1 {
                 .asObject(ChannelListResponse.class);
         return response.getBody();
     }
+
     private static String requestChannelDataAsString(String channelId) throws UnirestException {
-        initApplication();
         HttpResponse<String> response = Unirest.get("https://www.googleapis.com/youtube/v3/channels")
                 .queryString("id", channelId)
                 .queryString("part", "snippet,statistics")
@@ -88,6 +74,13 @@ public class Request1 {
                 .queryString("key", "AIzaSyDU2cowjo-PZ6Kmj93yjSU3grbjNL20LD0")
                 .asString();
         return response.getBody();
+    }
+    public static void sortResponse(ArrayList<String>list) throws UnirestException {
+        ArrayList<ChannelListResponse>responses = new ArrayList<>();
+        for(int i = 0; i < list.size();i++){
+            responses.add(requestChannelDataAsObject(list.get(i)));
+        }
+       // responses.sort();
     }
 
 

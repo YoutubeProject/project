@@ -1,16 +1,27 @@
 package youtubeProject.interfase.userInterfase.youtubeAnaliticsInterfase;
+import youtubeProject.interfase.userInterfase.GeneralScreen;
+import youtubeProject.program.Program;
 
 
+
+import com.mashape.unirest.http.exceptions.UnirestException;
 import youtubeProject.interfase.userInterfase.settingsInterfase.ProgramSettings;
+import youtubeProject.videos.Request3;
 
-public class YouTubeAnalytics extends ProgramSettings {
+import java.io.IOException;
+import java.util.Scanner;
 
-    public YouTubeAnalytics() {
+public class YouTubeAnalytics {
+    public static String channelId;
+    static Scanner sc = new Scanner(System.in);
+
+
+    public YouTubeAnalytics() throws IOException, UnirestException {
         addTask();
     }
 
-    @Override
-    public void displayTask() {
+
+    public static void displayTask() {
         System.out.println("YouTube Analytics \n");
         System.out.println("Choose task: \n" +
                 "1.Return to the main screen\n" +
@@ -22,8 +33,8 @@ public class YouTubeAnalytics extends ProgramSettings {
                 "7.Sort by Media Resonance");
     }
 
-    @Override
-    public int chooseTask() {
+
+    public static int chooseTask() {
         int result;
         boolean x = true;
         do{
@@ -39,32 +50,29 @@ public class YouTubeAnalytics extends ProgramSettings {
         return Integer.parseInt(null);
     }
 
-    @Override
-    public void addTask() {
-        boolean b = true;
+
+    public static void addTask() throws IOException, UnirestException {
         do {
-            int x = chooseTask();
-            String channelID;
             String continu;
-            switch (x) {
+            switch (chooseTask()) {
                 case 1:
-                    enterKey();
+                    GeneralScreen.enterKey();
                     break;
                 case 2:
                     System.out.println("Enter the channel");
-                    channelID = sc.nextLine();
-                    //медод который отображает глобальную информацию о канале
+                    channelId = sc.nextLine();
+                    Program.setChennelId(channelId);
                     break;
                 case 3:
                     String[] channels = enterChannels();
-                    //здесь твой медод примет 1 и 2 элементы массива и сравнивает глобальную информацию о каналах
+                    Program.setChennelIds(channels[0],channels[1]);
                     break;
                 case 4://метод сортировки каналов по их данным(принимает массив ID)
                     break;
                 case 5:
                     System.out.println("Enter the channel");
-                    channelID = sc.nextLine();
-                    //медиа резонанс
+                    channelId = sc.nextLine();
+                    Request3.setChennelId(channelId);
                     break;
                 case 6:
                     String[] channels1 = enterChannels();
@@ -76,18 +84,17 @@ public class YouTubeAnalytics extends ProgramSettings {
             System.out.println("Do you want to continue Y/N");
             continu = sc.nextLine();
             if(continu.equals("Y")||continu.equals("y")){
-                b = true;
             }else if(continu.equals("N")||continu.equals("n")){
-                b = false;
-            }
-        }while (b);
+                break;
+            }else break;
+        }while (true);
     }
 
-    public String[]enterChannels(){
+    public static String[]enterChannels(){
         String array[] = new String[2];
         System.out.println("Enter two channels ID in space");
         String enter = sc.nextLine();
-        array = enter.split("");
+        array = enter.split(" ");
         return array;
     }
 

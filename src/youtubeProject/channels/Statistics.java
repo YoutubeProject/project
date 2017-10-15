@@ -8,4 +8,5 @@ public class Statistics {
     public int subscriberCount;
     public int videoCount;
     public int viewCount;
+    public int commentCount;
 }
