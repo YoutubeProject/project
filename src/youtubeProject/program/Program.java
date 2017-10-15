@@ -18,37 +18,59 @@ import java.util.Scanner;
 public class Program {
     Scanner in = new Scanner(System.in);
 static ChannelListResponse channelListResponse;
-    static String channelId;
+    static String channelId1;
+    static String channelId2;
 
 
 
     public static void main(String[] args) throws UnirestException, IOException {
         Scanner in = new Scanner(System.in);
         System.out.print("Input Channel ID   ");
-        channelId = in.nextLine();
+        channelId1 = in.nextLine();
+        channelId2 = in.nextLine();
         //readFileToString(channelId);
 
-        String jsonString = Request1.getChannelDataAsString(channelId);
+        String jsonString = Request1.getChannelDataAsString(channelId1);
         System.out.println("Channel data was requested from server and converted to Json string.");
         try {
-            writeCacheToFile(jsonString, channelId);
+            writeCacheToFile(jsonString, channelId1);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         System.out.println("Json string was converted to object.\nFinish.\n");
-        readFileToString(channelId);
-        ChannelListResponse channelListResponse1 = convertStringToChannel(jsonString);
-        ArrayList<OneChannel>list1 = (ArrayList<OneChannel>) channelListResponse1.items;
-        for(int i = 0; i < channelListResponse1.items.size(); i++){
-            System.out.println(channelListResponse1.items.get(i).snippet.publishedAt);
-        }
+        setChennelIds(channelId1,channelId2);
 
 
         //return new Channel(convertStringToChannel(jsonString));
 
 
 
+    }
+
+    private static void setChennelIds(String channelId1, String channelId2) throws UnirestException, IOException {
+        String jsonString1 = Request1.getChannelDataAsString(channelId1);
+        String jsonString2 = Request1.getChannelDataAsString(channelId2);
+        writeCacheToFile(jsonString1,channelId1);
+        writeCacheToFile(jsonString2,channelId2);
+        ChannelListResponse channelListResponse1 = convertStringToChannel(jsonString1);
+        ChannelListResponse channelListResponse2 = convertStringToChannel(jsonString2);
+        try {
+            for (int i = 0; i < 1; i++) {
+                System.out.println(" Имя канала 1 - " + channelListResponse1.items.get(i).snippet.title + "\n" +
+                        " Имя канала 2 - " + channelListResponse2.items.get(i).snippet.title + "\n" +
+                        " Дата создания канала 1 - " + channelListResponse1.items.get(i).snippet.publishedAt + "\n" +
+                        " Дата создания канала 2 - " + channelListResponse2.items.get(i).snippet.publishedAt + "\n" +
+                        " Количество подписчиков канала 1 - " + channelListResponse1.items.get(i).statistics.subscriberCount + "\n" +
+                        " Количество подписчиков канала 2 - " + channelListResponse2.items.get(i).statistics.subscriberCount + "\n" +
+                        " Количество видео канала 1 - " + channelListResponse1.items.get(i).statistics.videoCount + "\n" +
+                        " Количество видео канала 2 - " + channelListResponse2.items.get(i).statistics.videoCount + "\n" +
+                        " Кол-во просмотров всех видео канала 1 - " + channelListResponse1.items.get(i).statistics.viewCount + "\n" +
+                        " Кол-во просмотров всех видео канала 2 - " + channelListResponse2.items.get(i).statistics.viewCount);
+            }
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
     }
 
 
