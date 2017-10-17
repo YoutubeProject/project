@@ -96,17 +96,17 @@ public class Program {
             list.add(YouTubeAnalytics.channelId);
             return Request1.getChannelDataAsString(channelId);
         }
-        return null;
+        return Request1.getChannelDataAsString(channelId);
     }
 
-    public static void writeCacheToFile(String jsonString, String channelId) throws IOException {
+    public static void writeCacheToFile(String jsonString, String channelId ) throws IOException {
         String savePath = WayToCache.way + channelId + "info.txt";
         File file = new File(savePath);
         FileWriter writer = new FileWriter(file);
         writer.write(jsonString);
         writer.flush();
-        writer.close();
     }
+
 
     static String readFileToString(String channelName) {
         String cachedChannelPath = (WayToCache.way + channelName + "info.txt");

@@ -75,13 +75,7 @@ public class Request1 {
                 .asString();
         return response.getBody();
     }
-    public static void sortResponse(ArrayList<String>list) throws UnirestException {
-        ArrayList<ChannelListResponse>responses = new ArrayList<>();
-        for(int i = 0; i < list.size();i++){
-            responses.add(requestChannelDataAsObject(list.get(i)));
-        }
-       // responses.sort();
-    }
+
 
 
 
